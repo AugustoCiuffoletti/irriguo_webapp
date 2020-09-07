@@ -5,10 +5,12 @@ import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
+
 export class MongodbService {
   
   apiKEY: string = 'hry609012yRTl'
   apiURL: string = 'https://eu-west-1.aws.webhooks.mongodb-stitch.com/api/client/v2.0/app/manage-jjtug/service/plantControl/incoming_webhook';
+
   constructor(private http: HttpClient) {}
   
   public getConfig(impianto: string): Observable<Object> {

@@ -1,74 +1,14 @@
-<h1> Irriguo 2019 - Trento </h1>
+<div *ngIf = "autenticato === false">
+<h1>Irriguo 2019</h1>
 
-<ul>
-  <li *ngFor='let impianto of impianti' >
-    <button (click)="seleziona(impianto)">{{impianto}}</button>
-  </li>
-</ul>
+<!-- <button (click) = 'login()'>Login</button> -->
 
-<div *ngIf = "statistiche !== undefined && selezionato !== undefined">
-<h2> Impianto <i>{{selezionato}}</i> </h2>
-<table style="width:300pt">
-<tr>
-	<th> Parametro </th>
-	<th> Valore </th>
-	<th> Unità </th>
-</tr>
-<tr>
-	<td> Range di corrente pompa</td>
-	<td> [{{statistiche.currentMin.$numberInt}},{{statistiche.currentMax.$numberInt}}] </td>
-	<td>mA</td> 
-</tr>
-<tr> 
-	<td> Periodo di irrigazione </td>
-	<td>{{statistiche.duration.$numberInt}} </td>
-	<td>s</td> 
-</tr>
-<tr>
-    <td> Orario di prima attivazione </td>
-	<td> {{stringaData(statistiche.t0.$date.$numberLong)}} </td>
-	<td></td> 
-</tr>
-<tr>
-	<td> Autonomia del serbatoio </td>
-	<td> {{statistiche.tankCapacity.$numberInt}} </td>
-	<td>s</td>
-</tr>
-<tr>
-	<td> Ultimo riempimento serbatoio </td>
-	<td> {{stringaData(statistiche.lastRefill.$date.$numberLong)}}
-	<td></td>
-</tr>
-<tr>  
-	<td>Residuo nel serbatoio </td>
-	<td>{{residuo.$numberDouble}} </td>
-	<td>s</td> 
-</tr>
-</table>
-<p>
-	<button (click) = 'refill()'>Aggiorna riempimento</button>
-</p>
+<input #password (keyup.enter)="login(password.value)" value={{loginMsg}}>
 
-<h3> Storico attivazioni </h3>
-
-<table style="width:300pt">
-<tr>
-<th> timestamp </th>
-<!-- <th> durata </th> -->
-<th> corrente </th>
-<th> vuoto </th>
-</tr>
-  <tr *ngFor='let stato of storico' >
-	  <td>{{stringaData(stato.timestamp.$date.$numberLong)}}</td>
-<!--	  <td>{{stato.wt.$numberLong}}</td> -->
-	  <td>{{stato.Im.$numberLong}}</td>
-	  <td>{{stato.emptyTank}}</td>
-  </tr>
-</table>
 </div>
 
-<div *ngIf = "statistiche === undefined && selezionato !== undefined">
-<h2> attendi... </h2>
+<div *ngIf = "autenticato === true">
+	<trento-component>
+	</trento-component>
+	<button (click) = 'logout()'>Logout</button>
 </div>
-<br>
-<button (click) = 'clean()'>Chiudi</button>

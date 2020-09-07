@@ -118,8 +118,13 @@
               "devServerTarget": "Irriguo2019:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "Irriguo2019"
 }

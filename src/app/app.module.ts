@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { TrentoComponent } from './trento/trento.component';
@@ -12,7 +12,8 @@ import { TrentoComponent } from './trento/trento.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
