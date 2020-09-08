@@ -5,12 +5,14 @@ import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { TrentoComponent } from './trento/trento.component';
 import { PlantselectComponent } from './plantselect/plantselect.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrentoComponent,
-    PlantselectComponent
+    PlantselectComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
