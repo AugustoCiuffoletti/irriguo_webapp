@@ -15,15 +15,18 @@ export class MongodbService {
   constructor(private http: HttpClient) {}
   
   public getConfig(impianto: string): Observable<Object> {
-    return this.http.get(this.apiURL+'/app_stat?secret='+this.apiKEY+'&plant='+impianto);
+    return this.http.get(this.apiURL+'/stat?secret='+this.apiKEY+'&plant='+impianto);
   }
   public getHistory(impianto: string): Observable<Object> {
-    return this.http.get(this.apiURL+'/app_hist?secret='+this.apiKEY+'&plant='+impianto);
+    return this.http.get(this.apiURL+'/hist?secret='+this.apiKEY+'&plant='+impianto);
   }
   public setRefill(impianto: string): Observable<Object> {
-    return this.http.get(this.apiURL+'/app_refill?secret='+this.apiKEY+'&plant='+impianto);
+    return this.http.get(this.apiURL+'/refill?secret='+this.apiKEY+'&plant='+impianto);
   }
   public getResidual(impianto: string): Observable<Object> {
-    return this.http.get(this.apiURL+'/app_residual?secret='+this.apiKEY+'&plant='+impianto);
+    return this.http.get(this.apiURL+'/residual?secret='+this.apiKEY+'&plant='+impianto);
+  }
+  public getAuth(name:string, key: string): Observable<Object> {
+    return this.http.get(this.apiURL+'/auth?secret='+this.apiKEY+'&name='+name+'&key='+key);
   }
 }
