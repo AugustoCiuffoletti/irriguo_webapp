@@ -1,14 +1,13 @@
 import { Component, NgZone } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClientModule } from "@angular/common/http";
-import { MongodbService } from "../mongodb.service";
-import { WeatherBitService } from "../weatherbit.service";
 
 @Component({
   selector: "trento-component",
   templateUrl: "./trento.component.html",
   styleUrls: ["./trento.component.css"]
 })
+
 export class TrentoComponent {
   impianti = ["balcone", "bouganville", "benjamin", "test"];
   selezionato: string = undefined;
