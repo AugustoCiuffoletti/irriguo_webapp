@@ -8,8 +8,9 @@ import { HttpClient } from "@angular/common/http";
 
 export class MongodbService {
   
-  apiKEY: string = 'hry609012yRTl'
-  apiURL: string = 'https://eu-west-1.aws.webhooks.mongodb-stitch.com/api/client/v2.0/app/manage-jjtug/service/plantControl/incoming_webhook';
+  apiKEY: string = 'ft6T8-=9IX5CwT';
+  apiURL: string = 'https://eu-west-1.aws.webhooks.mongodb-stitch.com/api/client/v2.0/app/irriguo2019_app-mnhjy/service/Irriguo2019_db/incoming_webhook';
+
 
   constructor(private http: HttpClient) {}
   
