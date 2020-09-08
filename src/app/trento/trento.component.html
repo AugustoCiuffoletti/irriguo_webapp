@@ -1,10 +1,4 @@
-<h1> Irriguo 2019 - Trento </h1>
 
-<ul>
-  <li *ngFor='let impianto of impianti' >
-    <button (click)="seleziona(impianto)">{{impianto}}</button>
-  </li>
-</ul>
 
 <div *ngIf = "statistiche !== undefined && selezionato !== undefined">
 <h2> Impianto <i>{{selezionato}}</i> </h2>

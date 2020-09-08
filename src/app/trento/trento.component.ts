@@ -24,35 +24,35 @@ export class TrentoComponent {
 
   ngOnInit() {}
 
-  seleziona(impianto) {
-    this.statistiche = undefined;
-    this.storico = undefined;
-    this.selezionato = impianto;
-    this.mdbService
-      .getConfig(this.selezionato)
-      .subscribe(
-        stat => (this.statistiche = stat),
-        err => console.error("MongoDB observer got an error: " + err.message)
-      );
-    this.mdbService
-      .getResidual(this.selezionato)
-      .subscribe(
-        res => (this.residuo = res),
-        err => console.error("MongoDB observer got an error: " + err.message)
-      );
-    this.mdbService
-      .getHistory(this.selezionato)
-      .subscribe(
-        hist => (this.storico = hist),
-        err => console.error("MongoDB observer got an error: " + err.message)
-      );
-    this.wbService.getMeteo("trento").subscribe(
-      (x: any) => {
-        console.log(JSON.stringify(x.data[0]));
-      },
-      err => console.error("Meteo observer got an error: " + err.message)
-    );
-  }
+  // seleziona(impianto) {
+  //   this.statistiche = undefined;
+  //   this.storico = undefined;
+  //   this.selezionato = impianto;
+  //   this.mdbService
+  //     .getConfig(this.selezionato)
+  //     .subscribe(
+  //       stat => (this.statistiche = stat),
+  //       err => console.error("MongoDB observer got an error: " + err.message)
+  //     );
+  //   this.mdbService
+  //     .getResidual(this.selezionato)
+  //     .subscribe(
+  //       res => (this.residuo = res),
+  //       err => console.error("MongoDB observer got an error: " + err.message)
+  //     );
+  //   this.mdbService
+  //     .getHistory(this.selezionato)
+  //     .subscribe(
+  //       hist => (this.storico = hist),
+  //       err => console.error("MongoDB observer got an error: " + err.message)
+  //     );
+  //   this.wbService.getMeteo("trento").subscribe(
+  //     (x: any) => {
+  //       console.log(JSON.stringify(x.data[0]));
+  //     },
+  //     err => console.error("Meteo observer got an error: " + err.message)
+  //   );
+  // }
 
   refill() {
     this.mdbService
