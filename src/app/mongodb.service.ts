@@ -28,5 +28,8 @@ export class MongodbService {
   }
   public getAuth(name:string, key: string): Observable<Object> {
     return this.http.get(this.apiURL+'/auth?secret='+this.apiKEY+'&name='+name+'&key='+key);
+  } 
+  public getPlants(): Observable<Object> {
+    return this.http.get(this.apiURL+'/plants?secret='+this.apiKEY);
   }
 }

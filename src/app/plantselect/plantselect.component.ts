@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
+import { MongodbService } from "../mongodb.service";
 
 @Component({
   selector: "app-plantselect",
@@ -6,14 +7,28 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./plantselect.component.css"]
 })
 export class PlantselectComponent implements OnInit {
-  impianti = ["balcone", "bouganville", "benjamin", "test"];
+  //impianti = ["balcone", "bouganville", "benjamin", "test"];
+  impianti;
   selezionato: string = undefined;
 
-  constructor() {}
+  constructor(private mdbService: MongodbService, private ngZone: NgZone) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mdbService.getPlants().subscribe(
+      resp => {
+        this.ngZone.run(() => {
+          this.impianti = resp;
+        });
+      },
+      err => console.error("Observer got an error: " + err.message)
+    );
+  }
 
   seleziona(impianto) {
     this.selezionato = impianto;
+  }
+
+  reopen() {
+    this.selezionato = undefined;
   }
 }

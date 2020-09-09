@@ -1,8 +1,9 @@
-<h1>
-  hallo {{plant}}
-</h1>
-<div *ngIf = "statistiche !== undefined && plant !== undefined">
+
+<div *ngIf = "plant !== undefined; else wait">
 <h2> Impianto <i>{{plant}}</i> </h2>
+</div>
+
+<div *ngIf = "statistiche !== undefined && residuo !== undefined; else wait">
 <table style="width:300pt">
 <tr>
 	<th> Parametro </th>
@@ -40,10 +41,13 @@
 	<td>s</td> 
 </tr>
 </table>
+</div>
+
 <p>
 	<button (click) = 'refill()'>Aggiorna riempimento</button>
 </p>
 
+<div *ngIf = "storico !== undefined; else wait">
 <h3> Storico attivazioni </h3>
 
 <table style="width:300pt">
@@ -62,7 +66,10 @@
 </table>
 </div>
 
-<div *ngIf = "statistiche === undefined && selezionato !== undefined">
-<h2> attendi... </h2>
-</div>
-<br>
+<ng-template #wait>
+<p> ... download in corso ...
+</ng-template>
+
+<p>
+	<button (click) = 'back()'>BACK</button>
+</p>

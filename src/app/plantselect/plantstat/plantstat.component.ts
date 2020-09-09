@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, Input } from "@angular/core";
+import { Component, OnInit, NgZone, Input,Output, EventEmitter } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClientModule } from "@angular/common/http";
 import { MongodbService } from "../../mongodb.service";
@@ -9,9 +9,9 @@ import { WeatherBitService } from "./weatherbit.service";
   templateUrl: "./plantstat.component.html",
   styleUrls: ["./plantstat.component.css"]
 })
-
 export class PlantstatComponent implements OnInit {
   @Input() plant: string;
+  @Output() close = new EventEmitter<string>();
   statistiche;
   storico;
   residuo;
@@ -23,6 +23,7 @@ export class PlantstatComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    console.log(">" + this.plant + "<");
     this.mdbService
       .getConfig(this.plant)
       .subscribe(
@@ -64,6 +65,10 @@ export class PlantstatComponent implements OnInit {
       },
       err => console.error("Observer got an error: " + err)
     );
+  }
+
+  back() {
+    this.close.emit("x");
   }
 
   stringaData(unixTime) {
