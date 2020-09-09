@@ -1,8 +1,13 @@
 <h1> Irriguo 2019 - Trento </h1>
 <div *ngIf="selezionato == undefined; else showstat">
 	<ul>
-		<li *ngFor='let impianto of impianti'>
-			<button (click)="seleziona(impianto)">{{impianto}}</button>
+		<li *ngFor='let impianto of impianti | keyvalue'>
+			<button 
+        (click)="seleziona(impianto.key)"
+        [ngClass]="{
+            'empty' : impianto.value,
+            'full' : !impianto.value
+         }">{{impianto.key}}</button>
 		</li>
 	</ul>
 </div>

@@ -7,7 +7,6 @@ import { MongodbService } from "../mongodb.service";
   styleUrls: ["./plantselect.component.css"]
 })
 export class PlantselectComponent implements OnInit {
-  //impianti = ["balcone", "bouganville", "benjamin", "test"];
   impianti;
   selezionato: string = undefined;
 
@@ -19,6 +18,7 @@ export class PlantselectComponent implements OnInit {
         this.ngZone.run(() => {
           this.impianti = resp;
         });
+        console.log(this.impianti)
       },
       err => console.error("Observer got an error: " + err.message)
     );
