@@ -1,7 +1,22 @@
 .full {
-    background-color: green;
+    background-color: rgb(136, 204, 136);
 }
 
 .empty {
-    background-color: red;
+    background-color: rgb(226, 94, 94);
+}
+
+.myb {
+   border: 1px outset blue;
+   height: 50px;
+   width: 150px;
+   cursor: pointer;
+   font-size: 20px;
+   font-weight: 900;
+    border-radius: 10px;
+}
+
+.myb:hover {
+   background-color: rgb(84, 84, 221);
+   color:white;
 }
