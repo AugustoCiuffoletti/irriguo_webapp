@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { MongodbService } from "./mongodb.service";
 
+
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
