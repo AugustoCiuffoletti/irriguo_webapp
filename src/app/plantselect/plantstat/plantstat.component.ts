@@ -27,19 +27,20 @@ export class PlantstatComponent implements OnInit {
     this.mdbService
       .getConfig(this.plant)
       .subscribe(
-        stat => (this.statistiche = stat),
+        stat => this.statistiche = stat,
         err => console.error("MongoDB observer got an error: " + err.message)
       );
     this.mdbService
       .getResidual(this.plant)
       .subscribe(
-        res => (this.residuo = res),
+        res => this.residuo = res,
         err => console.error("MongoDB observer got an error: " + err.message)
       );
+    console.log("> "+this.residuo);
     this.mdbService
       .getHistory(this.plant)
       .subscribe(
-        hist => (this.storico = hist),
+        hist => this.storico = hist,
         err => console.error("MongoDB observer got an error: " + err.message)
       );
     this.wbService.getMeteo("trento").subscribe(
@@ -52,19 +53,23 @@ export class PlantstatComponent implements OnInit {
 
   refill() {
     this.mdbService
-      .setRefill(this.selezionato)
+      .setRefill(this.plant)
       .subscribe(
         hist => console.log("Refill done"),
         err => console.error("Observer got an error: " + err)
       );
-    this.mdbService.getConfig(this.selezionato).subscribe(
-      stat => {
-        this.ngZone.run(() => {
-          this.statistiche = stat;
-        });
-      },
-      err => console.error("Observer got an error: " + err)
-    );
+    this.mdbService
+      .getConfig(this.plant)
+      .subscribe(
+        stat => this.statistiche = stat,
+        err => console.error("Observer got an error: " + err)
+      );
+    this.mdbService
+      .getResidual(this.plant)
+      .subscribe(
+        res => this.residuo = res,
+        err => console.error("MongoDB observer got an error: " + err.message)
+      );
   }
 
   back() {
