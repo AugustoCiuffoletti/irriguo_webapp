@@ -58,8 +58,8 @@
 </tr>
   <tr *ngFor='let stato of storico' >
 	  <td>{{stringaData(stato.timestamp.$date.$numberLong)}}</td>
-	  <td>{{stato.wt.$numberLong}}</td> 
-	  <td>{{stato.Im.$numberLong}}</td>
+	  <td>{{stato.wt.$numberInt}}</td> 
+	  <td>{{stato.Im.$numberInt}}</td>
 	  <td>{{stato.emptyTank}}</td>
   </tr>
 </table>
